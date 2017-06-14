@@ -1,8 +1,21 @@
 *:focus { outline: none; }
 
+body, html {
+	height:100%;
+}
+
 body {
 	color:#fff;
-	background:#28394d;
+	background:#28394d url(https://shapeshift.io/images/bg.jpg) no-repeat center center;
+	background-size: cover;
+	-webkit-font-smoothing: antialiased;
+	padding-top:20px;
+}
+
+
+.shifty-container {
+	margin:0 auto;
+	float:none;
 }
 
 .panel-body {
@@ -12,37 +25,54 @@ body {
 }
 
 .panel {
-	border-radius: 4px;
-	border-color:#8493a7;
-	border-width:4px;
-	background:#28394d;
-	margin-top:20px;
+	background:#55779f;
+	border:0;
+	box-shadow: 0 0 30px rgba(0,0,0,.3);
 }
-
+.coin img {
+	width:100%;
+	max-width:100px;
+}
 .coin strong {
-	display:inline-block;
-	background:rgba(0,0,0,.3);
-	border-radius: 300px;
+	display:block;
 	padding:0 15px;
 	margin-bottom:10px;
-	border:1px solid #212e3e;
-	font-weight: 500;
+	font-weight: bold;
+	color:#fff;
+}
+li.switch-coin img {
+	width:20px;
+	margin-right:5px;
+}
+.btn-full {
+	width:100%;
+}
+
+.other-dropdown {
+	margin-top:15px;
+	display: none;
+}
+.other-dropdown ul.dropdown-menu {
+	width:100%;
+	text-align:left;
+	max-height:130px;
+	height:auto;
+	overflow-x:hidden;
+}
+.other-dropdown .btn {
+	background:transparent;
+	border:2px solid #fff;
+	color:#fff;
 }
 
 strong {
-	color:#8493a7;
-}
-
-.payment-info {
-
-	width:50.5%
+	color:rgba(255,255,255,.5);
 }
 
 
 
-.deposit-limit {
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+.limits {
+
     min-height: 60px;
 }
 
@@ -60,26 +90,33 @@ strong {
 .col-md-4 {
 
 }
+
 .coin-container:before {
-    background: url("../images/pay_bg.png") no-repeat scroll center top #28394d;
+    background: url("") no-repeat scroll center top rgba(0,0,0,.1);
     background-size:cover;
-    border-right: 1px solid rgba(0,0,0,.5);
     content: "";
     height: 100%;
     position: absolute;
-    left: 0;
     top: 0;
-    width: 209px;
+    min-height: 230px;
+    width:100%;
 
+
+}
+
+.coin-fields {
+	background:#fff;
+	color:#333;
+	min-height: 230px;
+	border-radius: 0px 4px 0px 0px;
 }
 
 .coin-container {
-	position: static;
+	position: relative;
+	padding-left:0;
 }
 
-.right {
-	padding:15px 15px 15px 0;
-}
+
 
 .form-item {
 	margin-bottom:15px;
@@ -94,9 +131,6 @@ strong {
 	position: relative;
 	z-index:1;
 	padding:0 10px;
-	background:#212e3e;
-	border-top:1px solid rgba(0, 0, 0, 0.5);
-	border-radius: 0 0 4px 4px;
 
 }
 
@@ -116,13 +150,6 @@ p {
 	margin-bottom:0;
 }
 
-.col-xs-2 {
-	width:20%;
-}
-
-.pane-header .col-xs-4 {
-	width:29.333%;
-}
 
 h4 {
 	margin-top:0;
@@ -133,7 +160,12 @@ h4 {
 }
 
 .btn-success {
-
+	background:#55779f;
+	border-color:#55779f;
+}
+.btn-success:hover {
+	background:#344d6a;
+	border-color:#344d6a;
 }
 
 .status-window {
@@ -172,7 +204,7 @@ h4 {
 	position: relative;
 	width:150px;
 	overflow: hidden;
-	
+
 }
 
 .deposit-address {
@@ -202,7 +234,7 @@ h4 {
 	display: block;
 	font-size:30px;
 	margin-bottom:10px;
-	
+
 }
 
 .status-window ul li span.status {
@@ -310,6 +342,12 @@ h4 {
 
 .dd .ddChild li {
 	border-bottom:1px solid #ddd;
+	float:left;
+	clear:right;
+	width:50%;
+}
+.dd .ddChild li:first-child {
+	display: none !important;
 }
 
 .dd .ddArrow {
@@ -325,6 +363,8 @@ h4 {
 	overflow-y:auto;
 	height:auto !important;
 	outline:none;
+	margin-left:0;
+	left:0 !important;
 }
 
 .status-message img {
@@ -336,6 +376,14 @@ h4 {
 	padding:5px;
 	background:#fff;
 	border-radius: 4px;
+}
+
+span.depo-address strong {
+	display: block;
+}
+
+span.depo-address-block strong {
+	color:#fff;
 }
 
 .instructions {
@@ -365,12 +413,53 @@ h4 {
 	color:#fff;
 	height:auto;
 	font-size:inherit;
+	box-shadow: 0 0 0 transparent;
 }
 
 .payment-footer {
 	font-size:11px;
 }
 
+.ddcommon ul {
+	height:250px;
+	overflow-y:scroll;
+	width:auto !important;
+}
+
+.rs-address-input {
+	display: none;
+}
+
+.dest-tag-input {
+	display: none;
+}
+
+.public-key {
+	display: block;
+	font-size:11px;
+	margin-top:5px;
+	color:rgba(255,255,255,.6);
+}
+
+.destTag {
+	display: block;
+	font-size:12px;
+	color:rgba(255,255,255,.6);
+}
+
+
+.long {
+	overflow-x: auto;
+}
+
+.alert {
+	margin-top:10px;
+}
+
+	.depo-address {
+		width:100%;
+		overflow-x: scroll;
+	}
 
 /* Webkit spinner */
 
@@ -385,7 +474,7 @@ h4 {
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #8193a7;
+  background-color: #fff;
 
   border-radius: 100%;
   display: inline-block;
@@ -412,11 +501,86 @@ h4 {
 }
 
 @keyframes bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 40% { 
+  } 40% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+@media (max-width:859px) {
+	.dd .ddChild li {
+		float:none;
+		width:100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.right {
+		padding:inherit;
+	}
+	.actions .btn {
+		display: block;
+		margin-bottom:15px;
+		width:100%;
+	}
+	.coin-container::before {
+		width:calc(100%);
+		min-height: 245px;
+	}
+	.right {
+		padding:15px;
+	}
+	.status-window ul li {
+		width:100%;
+	}
+	.status-window ul {
+		padding-left:10px;
+		padding-right:10px;
+	}
+
+	.dd .ddChild li {
+		float:none;
+		width:100%;
+	}
+
+}
+@media (max-width: 599px) {
+	.col-xs-7 {
+		width:100%;
+		float:none;
+	}
+	.amount {
+		width:100%;
+		float:none;
+		padding-left:15px;
+	}
+	.dd .ddChild li {
+		float:none;
+		width:100%;
+	}
+	.col-xs-4, .col-xs-8 {
+		float:none;
+		width:100%;
+	}
+	.coin-container::before {
+		width:calc(100%);
+		border-right:0;
+	}
+
+}
+
+@media (min-width: 768px) {
+	.right {
+		padding:15px 0;
+	}
+	.pane-header .exchange-rate{
+		width:29.333%;
+		float:left;
+	}
+
+
+
 }
