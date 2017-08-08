@@ -395,9 +395,12 @@ jQuery( document ).ready(function( $ ) {
                     // every eight seconds get the current status of any deposits.
                     // by making a call to shapeshift's api
                     $.get(SITE+"/txStat/" + encodeURIComponent(deposit), {timeout: 4500}).done(function(response) {
-			// send status updates to window opener
+			// send tx status updates to window opener
 			if (window.opener) {
-			    window.opener.postMessage(response, '*')
+			    window.opener.postMessage({
+                              type: 'txStat',
+                              data: response
+                            }, '*');
 			}
 			    
                         var status = response.status;
